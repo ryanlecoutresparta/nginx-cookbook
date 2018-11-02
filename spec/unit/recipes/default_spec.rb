@@ -11,7 +11,7 @@ describe 'nginx-cookbook::default' do
     let(:chef_run) do
       # for a complete list of available platforms and versions see:
       # https://github.com/customink/fauxhai/blob/master/PLATFORMS.md
-      runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
+      runner = ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04')
       runner.converge(described_recipe)
     end
 
@@ -41,10 +41,6 @@ describe 'nginx-cookbook::default' do
 
     it 'should delete the symlink from the default config in sites-enabled' do
       expect(chef_run).to delete_link('/etc/nginx/sites-enabled/default')
-    end
-
-    it 'should create a proxy.conf template in /etc/nginx/sites-available' do
-      expect(chef_run).to create_template('/etc/nginx/sites-available/proxy.conf').with_variables(proxy_port)
     end
   end
 end

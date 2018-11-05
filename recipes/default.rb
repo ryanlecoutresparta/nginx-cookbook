@@ -15,6 +15,14 @@ service 'nginx' do
   action [:enable, :start]
 end
 
+
+
+include_recipe "nodejs"
+
+nodejs_npm 'pm2'
+
+
+
 template '/etc/nginx/sites-available/proxy.conf' do
   source 'proxy.conf.erb'
   variables proxy_port: node['nginx']['proxy_port']

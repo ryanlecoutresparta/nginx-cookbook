@@ -16,7 +16,6 @@ end
 
 describe package "nodejs" do
   it { should be_installed }
-  its('version') { should cmp > '6.11.2*' }
 end
 
 describe npm ("pm2") do

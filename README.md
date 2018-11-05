@@ -6,3 +6,4 @@ Created a cookbook for Nginx and included both unit and integration tests for it
 ### Challenges
 1. Trying to include all the necessary tests for Nginx.
 2. Trying to make the proxy port work without any errors.
+3. The main error/mistake we made was using 'http://development.local' in the proxy.conf file instead of 'http://localhost'. This made it impossible to vagrant up because Nginx did not recognise development.local yet, as it had not completed the mapping of development.local to 192.168.10.100 (which is done in the Vagrantfile). 

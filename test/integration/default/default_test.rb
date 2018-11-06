@@ -27,5 +27,5 @@ describe port(80) do
 end
 
 describe http('http://localhost', enable_remote_worker: true) do
-  its('status'){ should_not cmp 502 }
+  its('status'){ should cmp 502 }
 end
